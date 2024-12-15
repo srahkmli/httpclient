@@ -56,7 +56,7 @@ You can customize the HTTP client with options like custom headers, timeouts, or
     import (
     "fmt"
     "log"
-    "github.com/yourusername/httpclient"
+    "github.com/srahkmli/httpclient"
     )
 
     func main() {
@@ -84,7 +84,7 @@ To handle timeouts, you can configure the timeout value when initializing the cl
     import (
     "fmt"
     "log"
-    "github.com/yourusername/httpclient"
+    "github.com/srahkmli/httpclient"
     )
 
     func main() {
@@ -111,7 +111,7 @@ To handle timeouts, you can configure the timeout value when initializing the cl
     import (
     "fmt"
     "log"
-    "github.com/yourusername/httpclient"
+    "github.com/srahkmli/httpclient"
     )
 
     func main() {
@@ -136,7 +136,7 @@ The httpclient package supports automatic retries for failed requests. You can c
     import (
     "fmt"
     "log"
-    "github.com/yourusername/httpclient"
+    "github.com/srahkmli/httpclient"
     )
 
     func main() {
@@ -165,7 +165,7 @@ This package also simplifies working with JSON responses. You can decode JSON di
     import (
     "fmt"
     "log"
-    "github.com/yourusername/httpclient"
+    "github.com/srahkmli/httpclient"
     )
 
     type ApiResponse struct {
