@@ -10,7 +10,7 @@ import (
 )
 
 // Post sends a POST request with the specified body and headers and decodes the response into the provided type T.
-func Post[T any](ctx context.Context, client IHttpClient, url string, req any, headers map[string]string) (T, error) {
+func Post[T any](ctx context.Context, client httpClient, url string, req any, headers map[string]string) (T, error) {
 	var resStruct T
 
 	resp, err := client.PostRequest(ctx, url, req, headers)
@@ -26,7 +26,7 @@ func Post[T any](ctx context.Context, client IHttpClient, url string, req any, h
 }
 
 // Get sends a GET request with the specified headers and decodes the response into the provided type T.
-func Get[T any](ctx context.Context, client IHttpClient, url string, headers map[string]string) (T, error) {
+func Get[T any](ctx context.Context, client httpClient, url string, headers map[string]string) (T, error) {
 	var resStruct T
 
 	resp, err := client.GetRequest(ctx, url, headers)
@@ -110,35 +110,35 @@ func (c *httpClient) GetWithResponseTime(ctx context.Context, url string, header
 
 // WithUserAgent sets a custom User-Agent header globally.
 func WithUserAgent(userAgent string) Option {
-	return func(c *IHttpClient) {
+	return func(c *httpClient) {
 		c.userAgent = userAgent
 	}
 }
 
 // WithTransport allows setting a custom HTTP transport for fine-grained control.
 func WithTransport(transport http.RoundTripper) Option {
-	return func(c *IHttpClient) {
+	return func(c *httpClient) {
 		c.transport = transport
 	}
 }
 
 // WithProxy sets the proxy URL for the HTTP client.
 func WithProxy(proxyURL string) Option {
-	return func(c *IHttpClient) {
+	return func(c *httpClient) {
 		c.proxyURL = proxyURL
 	}
 }
 
 // WithTLSConfig allows configuring custom TLS settings, e.g., disabling SSL verification.
 func WithTLSConfig(tlsConfig *tls.Config) Option {
-	return func(c *IHttpClient) {
+	return func(c *httpClient) {
 		c.tlsConfig = tlsConfig
 	}
 }
 
 // WithBodyLogging enables logging of request and response bodies (use with caution).
 func WithBodyLogging(enable bool) Option {
-	return func(c *IHttpClient) {
+	return func(c *httpClient) {
 		c.enableBodyLogging = enable
 	}
 }
